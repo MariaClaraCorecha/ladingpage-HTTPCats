@@ -18,8 +18,12 @@ export class Header {
     { href: '#fundamentos', label: 'Fundamentos' },
     { href: '#classes', label: 'Classes' },
     { href: '#explorador', label: 'Explorador' },
+    { href: '#pegadinhas', label: 'Pegadinhas' },
+    { href: '#cabecalhos', label: 'Cabeçalhos' },
     { href: '#simulador', label: 'Simulador' },
+    { href: '#na-pratica', label: 'Na prática' },
     { href: '#quiz', label: 'Quiz' },
+    { href: '#faq', label: 'FAQ' },
   ];
 
   protected readonly dark = signal(this.initialTheme());
@@ -34,7 +38,7 @@ export class Header {
     try {
       localStorage.setItem(THEME_KEY, this.dark() ? 'dark' : 'light');
     } catch {
-      // Armazenamento indisponível (ex.: modo privado); o tema vale só para esta visita.
+
     }
   }
 
@@ -47,7 +51,6 @@ export class Header {
   }
 
   private applyTheme(): void {
-    // Aplicado no <html> para que os tokens light-dark() do Material valham na página inteira.
     document.documentElement.style.colorScheme = this.dark() ? 'dark' : 'light';
   }
 }

@@ -1,0 +1,49 @@
+<section id="cabecalhos" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>label</mat-icon> Cabeçalhos</p>
+    <h2>O código diz o quê, os cabeçalhos dizem o resto</h2>
+    <p>
+      Muitos status só fazem sentido acompanhados do cabeçalho certo: um 201 aponta o
+      <code>Location</code>, um 429 avisa o <code>Retry-After</code>. Clique nos códigos para ver os
+      detalhes.
+    </p>
+  </header>
+
+  <mat-button-toggle-group
+    class="filter"
+    aria-label="Filtrar cabeçalhos por direção"
+    hideSingleSelectionIndicator
+    [value]="filter()"
+    (change)="filter.set($event.value)"
+  >
+    <mat-button-toggle value="all">Todos</mat-button-toggle>
+    <mat-button-toggle value="request">
+      <mat-icon>north_east</mat-icon> Requisição
+    </mat-button-toggle>
+    <mat-button-toggle value="response">
+      <mat-icon>south_west</mat-icon> Resposta
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <ul class="grid">
+    @for (h of headers(); track h.name) {
+      @let dir = directionInfo[h.direction];
+      <li class="card">
+        <div class="card-top">
+          <h3>{{ h.name }}</h3>
+          <span class="direction"
+            ><mat-icon>{{ dir.icon }}</mat-icon> {{ dir.label }}</span
+          >
+        </div>
+        <p>{{ h.description }}</p>
+        <pre class="code-block">{{ h.example }}</pre>
+        <div class="codes">
+          <span>Aparece em:</span>
+          @for (code of h.codes; track code) {
+            <app-status-chip [code]="code" />
+          }
+        </div>
+      </li>
+    }
+  </ul>
+</section>
