@@ -1,0 +1,87 @@
+<section id="explorador" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>travel_explore</mat-icon> Explorador</p>
+    <h2>Um gato para cada código</h2>
+    <p>
+      Busque por número ou nome, filtre por classe e clique em um card para ver quando cada código
+      aparece na vida real.
+    </p>
+  </header>
+
+  <div class="filters">
+    <mat-form-field appearance="outline" class="search" subscriptSizing="dynamic">
+      <mat-label>Buscar código ou nome</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        type="text"
+        placeholder="Ex.: 404, teapot, redirect"
+        [value]="query()"
+        (input)="query.set($any($event.target).value)"
+      />
+      @if (query()) {
+        <button mat-icon-button matSuffix (click)="query.set('')" aria-label="Limpar busca">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+
+    <mat-chip-listbox
+      aria-label="Filtrar por classe"
+      [value]="state.selectedClass()"
+      (change)="state.selectedClass.set($event.value ?? null)"
+    >
+      @for (c of classes; track c.id) {
+        <mat-chip-option [value]="c.id" [class]="'status-c' + c.id">
+          {{ c.range }} · {{ c.title }}
+        </mat-chip-option>
+      }
+    </mat-chip-listbox>
+
+    <mat-slide-toggle [checked]="showUnofficial()" (change)="showUnofficial.set($event.checked)">
+      Incluir códigos não oficiais
+    </mat-slide-toggle>
+  </div>
+
+  <p class="count" aria-live="polite">
+    {{ results().length }}
+    {{ results().length === 1 ? 'código encontrado' : 'códigos encontrados' }}
+    @if (hasFilters()) {
+      <button mat-button (click)="clearFilters()">
+        <mat-icon>filter_alt_off</mat-icon>
+        Limpar filtros
+      </button>
+    }
+  </p>
+
+  @if (results().length) {
+    <ul class="grid">
+      @for (s of results(); track s.code) {
+        <li>
+          <button
+            type="button"
+            class="status-card"
+            [class]="'status-c' + classOf(s.code)"
+            (click)="open(s)"
+            [attr.aria-label]="s.code + ' ' + s.name + ': ver detalhes'"
+          >
+            <img [src]="imageOf(s.code)" alt="" width="750" height="600" loading="lazy" />
+            <span class="info">
+              <span class="code">{{ s.code }}</span>
+              <span class="name">{{ s.name }}</span>
+              @if (s.unofficial) {
+                <span class="badge">não oficial</span>
+              }
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <div class="empty">
+      <mat-icon>search_off</mat-icon>
+      <p>Nenhum gato encontrado para essa busca.</p>
+      <button mat-stroked-button (click)="clearFilters()">Limpar filtros</button>
+    </div>
+  }
+</section>
