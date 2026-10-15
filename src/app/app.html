@@ -2,4 +2,27 @@
 
 <main class="container">
   <app-hero />
+  <app-fundamentals />
+  <app-classes />
+
+  <!-- Seções interativas carregadas sob demanda para manter o bundle inicial leve. -->
+  @defer (on viewport; prefetch on idle) {
+    <app-explorer />
+  } @placeholder {
+    <div id="explorador" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
+    <app-simulator />
+  } @placeholder {
+    <div id="simulador" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
+    <app-quiz />
+  } @placeholder {
+    <div id="quiz" class="section-placeholder"></div>
+  }
 </main>
+
+<app-footer />
