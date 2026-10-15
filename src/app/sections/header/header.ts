@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+const THEME_KEY = 'http-cats-theme';
+
 @Component({
   selector: 'app-header',
   imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTooltipModule],
@@ -20,9 +22,7 @@ export class Header {
     { href: '#quiz', label: 'Quiz' },
   ];
 
-  protected readonly dark = signal(
-    window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false,
-  );
+  protected readonly dark = signal(this.initialTheme());
 
   constructor() {
     this.applyTheme();
@@ -31,9 +31,23 @@ export class Header {
   protected toggleTheme(): void {
     this.dark.update((d) => !d);
     this.applyTheme();
+    try {
+      localStorage.setItem(THEME_KEY, this.dark() ? 'dark' : 'light');
+    } catch {
+      // Armazenamento indisponível (ex.: modo privado); o tema vale só para esta visita.
+    }
+  }
+
+  private initialTheme(): boolean {
+    try {
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved) return saved === 'dark';
+    } catch {}
+    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
   }
 
   private applyTheme(): void {
-    document.body.style.colorScheme = this.dark() ? 'dark' : 'light';
+    // Aplicado no <html> para que os tokens light-dark() do Material valham na página inteira.
+    document.documentElement.style.colorScheme = this.dark() ? 'dark' : 'light';
   }
 }
