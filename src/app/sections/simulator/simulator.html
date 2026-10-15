@@ -1,0 +1,75 @@
+<section id="simulador" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>science</mat-icon> Simulador</p>
+    <h2>Mande uma requisição e veja o que volta</h2>
+    <p>
+      Escolha uma situação do dia a dia, envie a requisição e descubra qual código o servidor
+      responderia, e por quê.
+    </p>
+  </header>
+
+  <div class="controls">
+    <mat-form-field appearance="outline" subscriptSizing="dynamic" class="scenario-field">
+      <mat-label>Situação</mat-label>
+      <mat-select [value]="selected()" (selectionChange)="select($event.value)">
+        @for (s of scenarios; track s.id) {
+          <mat-option [value]="s">{{ s.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button (click)="send()" [disabled]="phase() === 'sending'">
+      <mat-icon>send</mat-icon>
+      Enviar requisição
+    </button>
+  </div>
+
+  <div class="panels">
+    <div class="panel">
+      <h3>
+        <mat-icon>north_east</mat-icon> Requisição
+        <span class="method" [class]="'method-' + selected().method.toLowerCase()">
+          {{ selected().method }}
+        </span>
+      </h3>
+      <pre class="code-block">{{ requestText() }}</pre>
+    </div>
+
+    <div class="panel response" [class]="'status-c' + statusClass()" aria-live="polite">
+      <h3><mat-icon>south_west</mat-icon> Resposta</h3>
+
+      @switch (phase()) {
+        @case ('idle') {
+          <div class="placeholder">
+            <mat-icon>hourglass_empty</mat-icon>
+            <p>Clique em <strong>Enviar requisição</strong> para ver a resposta.</p>
+          </div>
+        }
+        @case ('sending') {
+          <div class="placeholder">
+            <mat-spinner diameter="40" />
+            <p>Aguardando o servidor...</p>
+          </div>
+        }
+        @case ('done') {
+          <div class="result">
+            <p class="status-line">
+              <span class="code">{{ selected().status }}</span>
+              {{ statusName() }}
+            </p>
+            <pre class="code-block">{{ responseText() }}</pre>
+            <div class="explanation">
+              <img
+                [src]="image()"
+                [alt]="'Gato representando o status ' + selected().status"
+                width="750"
+                height="600"
+              />
+              <p><mat-icon>lightbulb</mat-icon> {{ selected().explanation }}</p>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>
