@@ -1,0 +1,30 @@
+<section id="classes" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>category</mat-icon> Classes</p>
+    <h2>Cinco famílias de respostas</h2>
+    <p>
+      Os códigos são agrupados pelo primeiro dígito. Decore estas cinco classes e você entende
+      qualquer resposta, mesmo de um código que nunca viu.
+    </p>
+  </header>
+
+  <ul class="grid">
+    @for (c of classes; track c.id) {
+      <li class="card" [class]="'status-c' + c.id">
+        <div class="card-top">
+          <span class="icon"
+            ><mat-icon>{{ c.icon }}</mat-icon></span
+          >
+          <span class="range">{{ c.range }}</span>
+        </div>
+        <h3>{{ c.title }}</h3>
+        <p class="summary">{{ c.summary }}</p>
+        <p class="analogy"><mat-icon>format_quote</mat-icon> {{ c.analogy }}</p>
+        <button mat-button class="explore" (click)="explore(c.id)">
+          Ver {{ c.count }} códigos
+          <mat-icon iconPositionEnd>arrow_downward</mat-icon>
+        </button>
+      </li>
+    }
+  </ul>
+</section>
