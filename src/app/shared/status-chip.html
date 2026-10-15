@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="chip"
+  [class]="'status-c' + cls()"
+  [matTooltip]="status()?.name ?? ''"
+  [attr.aria-label]="code() + ' ' + (status()?.name ?? '') + ': ver detalhes'"
+  (click)="open()"
+>
+  {{ code() }}
+</button>
