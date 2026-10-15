@@ -1,0 +1,26 @@
+<section id="inicio" class="hero">
+  <div class="content">
+    <p class="eyebrow">Aprenda o protocolo HTTP com gatos</p>
+    <h1>Todo pedido na web recebe uma resposta. <span>E cada resposta tem um código.</span></h1>
+    <p class="lead">
+      Os códigos de status HTTP contam ao navegador o que aconteceu com a requisição. Explore,
+      simule e teste seus conhecimentos com a ajuda da API
+      <a href="https://http.cat" target="_blank" rel="noopener">http.cat</a>.
+    </p>
+    <div class="actions">
+      <a mat-flat-button href="#fundamentos">
+        <mat-icon>school</mat-icon>
+        Começar a aprender
+      </a>
+      <a mat-stroked-button href="#quiz">
+        <mat-icon>quiz</mat-icon>
+        Ir para o quiz
+      </a>
+    </div>
+  </div>
+
+  <button class="cat-frame" type="button" (click)="next()" aria-label="Mostrar outro gato">
+    <img [src]="image()" [alt]="'Gato representando o status ' + code()" width="750" height="600" />
+    <span class="hint"><mat-icon>touch_app</mat-icon> clique para trocar</span>
+  </button>
+</section>
