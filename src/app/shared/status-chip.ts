@@ -4,7 +4,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { findStatus, statusClassOf } from '../data/status-codes';
 import { openStatusDialog } from './status-dialog';
 
-/** Código de status clicável, colorido pela classe, que abre o diálogo de detalhes. */
+
 @Component({
   selector: 'app-status-chip',
   imports: [MatTooltipModule],

@@ -18,7 +18,7 @@ export class StatusDialog {
   protected readonly mdnUrl = `https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status/${this.status.code}`;
 }
 
-/** Abre o diálogo de detalhes de um status com o mesmo tamanho em todas as seções. */
+
 export function openStatusDialog(dialog: MatDialog, status: HttpStatus): void {
   dialog.open(StatusDialog, {
     data: status,
