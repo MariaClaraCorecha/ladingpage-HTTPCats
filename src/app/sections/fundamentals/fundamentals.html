@@ -1,0 +1,71 @@
+<section id="fundamentos" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>school</mat-icon> Fundamentos</p>
+    <h2>Como funciona uma conversa HTTP</h2>
+    <p>
+      HTTP é o idioma que navegadores e servidores usam para conversar. Toda conversa é um par: uma
+      <strong>requisição</strong> e uma <strong>resposta</strong>.
+    </p>
+  </header>
+
+  <ol class="steps">
+    @for (step of steps; track step.title; let i = $index) {
+      <li class="step">
+        <span class="step-icon"
+          ><mat-icon>{{ step.icon }}</mat-icon></span
+        >
+        <span class="step-number">{{ i + 1 }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.text }}</p>
+      </li>
+    }
+  </ol>
+
+  <div class="anatomy">
+    <figure>
+      <figcaption><mat-icon>north_east</mat-icon> Requisição</figcaption>
+      <pre class="code-block">{{ request }}</pre>
+      <ul class="legend">
+        <li><strong>Linha inicial:</strong> método, caminho e versão do protocolo.</li>
+        <li><strong>Cabeçalhos:</strong> informações extras, como o formato aceito.</li>
+      </ul>
+    </figure>
+    <figure>
+      <figcaption><mat-icon>south_west</mat-icon> Resposta</figcaption>
+      <pre class="code-block">{{ response }}</pre>
+      <ul class="legend">
+        <li><strong>Linha de status:</strong> versão, código e frase de motivo.</li>
+        <li><strong>Corpo:</strong> o conteúdo em si, separado por uma linha em branco.</li>
+      </ul>
+    </figure>
+  </div>
+
+  <div class="extras">
+    <div class="panel">
+      <h3><mat-icon>bolt</mat-icon> Os métodos mais comuns</h3>
+      <ul class="methods">
+        @for (m of methods; track m.name) {
+          <li>
+            <mat-icon>{{ m.icon }}</mat-icon>
+            <code>{{ m.name }}</code>
+            <span>{{ m.text }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3><mat-icon>pin</mat-icon> Lendo um código de status</h3>
+      <div class="digits" aria-label="Código 404">
+        <span class="digit first">4</span>
+        <span class="digit">0</span>
+        <span class="digit">4</span>
+      </div>
+      <p>
+        O <strong>primeiro dígito</strong> diz a classe da resposta (aqui, 4 = erro do cliente). Os
+        outros dois detalham o caso específico (04 = não encontrado). Só de olhar o primeiro número
+        você já sabe de quem é a culpa!
+      </p>
+    </div>
+  </div>
+</section>
