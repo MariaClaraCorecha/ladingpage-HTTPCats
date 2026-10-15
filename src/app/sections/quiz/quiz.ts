@@ -7,7 +7,7 @@ import { catImageUrl, findStatus, statusClassOf } from '../../data/status-codes'
 
 const QUESTION_COUNT = 8;
 
-/** Códigos usados como alternativas erradas, além dos que aparecem nos cenários. */
+
 const DISTRACTOR_POOL = [
   200, 201, 202, 204, 301, 302, 304, 307, 400, 401, 403, 404, 405, 409, 410, 418, 422, 429, 500,
   502, 503, 504,
@@ -27,7 +27,7 @@ function shuffle<T>(items: readonly T[]): T[] {
   return copy;
 }
 
-/** Monta 4 alternativas, priorizando códigos da mesma classe (ex.: 401 x 403) para ficar desafiador. */
+
 function buildOptions(answer: number): number[] {
   const others = shuffle(DISTRACTOR_POOL.filter((c) => c !== answer));
   const sameClass = others.filter((c) => statusClassOf(c) === statusClassOf(answer)).slice(0, 2);
@@ -61,7 +61,7 @@ export class Quiz {
   );
   protected readonly isLast = computed(() => this.index() === this.total() - 1);
 
-  /** O próprio resultado vira um status: acertou tudo = 200, metade = 206, pouco = 400. */
+
   protected readonly resultCode = computed(() => {
     const ratio = this.score() / this.total();
     if (ratio === 1) return 200;
