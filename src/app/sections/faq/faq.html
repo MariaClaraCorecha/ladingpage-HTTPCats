@@ -1,0 +1,18 @@
+<section id="faq" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>help</mat-icon> Perguntas frequentes</p>
+    <h2>Ainda com dúvida?</h2>
+    <p>As perguntas que mais aparecem para quem está começando a estudar HTTP.</p>
+  </header>
+
+  <mat-accordion class="faq">
+    @for (item of items; track item.question) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ item.question }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ item.answer }}</p>
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+</section>

@@ -1,0 +1,22 @@
+.faq {
+  display: block;
+  max-width: 820px;
+}
+
+// Mais específico que a regra do accordion, que zera o arredondamento dos painéis do meio.
+.faq .mat-expansion-panel {
+  margin-bottom: 8px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 16px;
+  background: var(--mat-sys-surface-container-low);
+  box-shadow: none;
+}
+
+mat-panel-title {
+  font: var(--mat-sys-title-small);
+}
+
+p {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+}
