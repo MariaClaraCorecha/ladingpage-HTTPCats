@@ -5,11 +5,23 @@
   <app-fundamentals />
   <app-classes />
 
-  <!-- Seções interativas carregadas sob demanda para manter o bundle inicial leve. -->
+  <!-- Seções carregadas sob demanda para manter o bundle inicial leve. -->
   @defer (on viewport; prefetch on idle) {
     <app-explorer />
   } @placeholder {
     <div id="explorador" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
+    <app-comparisons />
+  } @placeholder {
+    <div id="pegadinhas" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
+    <app-header-guide />
+  } @placeholder {
+    <div id="cabecalhos" class="section-placeholder"></div>
   }
 
   @defer (on viewport; prefetch on idle) {
@@ -19,9 +31,21 @@
   }
 
   @defer (on viewport; prefetch on idle) {
+    <app-practices />
+  } @placeholder {
+    <div id="na-pratica" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
     <app-quiz />
   } @placeholder {
     <div id="quiz" class="section-placeholder"></div>
+  }
+
+  @defer (on viewport; prefetch on idle) {
+    <app-faq />
+  } @placeholder {
+    <div id="faq" class="section-placeholder"></div>
   }
 </main>
 
