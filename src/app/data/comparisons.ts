@@ -4,13 +4,12 @@ export interface ComparisonSide {
   text: string;
 }
 
-/** Pares de códigos que costumam ser confundidos. */
+
 export interface Comparison {
   id: string;
   question: string;
   left: ComparisonSide;
   right: ComparisonSide;
-  /** Regra de bolso para decidir entre os dois. */
   rule: string;
 }
 

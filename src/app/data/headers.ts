@@ -5,7 +5,6 @@ export interface HeaderInfo {
   direction: HeaderDirection;
   description: string;
   example: string;
-  /** Códigos de status em que este cabeçalho costuma aparecer. */
   codes: number[];
 }
 

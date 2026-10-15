@@ -2,9 +2,7 @@ export interface Practice {
   icon: string;
   title: string;
   text: string;
-  /** O jeito recomendado. */
   good: string;
-  /** O jeito que causa problemas. */
   bad: string;
 }
 

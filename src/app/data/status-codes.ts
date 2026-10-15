@@ -3,11 +3,8 @@ export type StatusClass = 1 | 2 | 3 | 4 | 5;
 export interface HttpStatus {
   code: number;
   name: string;
-  /** Explicação curta, em linguagem simples. */
   description: string;
-  /** Quando o servidor deve (ou costuma) responder com este código. */
   whenToUse: string;
-  /** Códigos que não fazem parte da RFC oficial (extensões de servidores/serviços). */
   unofficial?: boolean;
 }
 
