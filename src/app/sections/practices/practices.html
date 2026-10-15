@@ -1,0 +1,57 @@
+<section id="na-pratica" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>construction</mat-icon> Na prática</p>
+    <h2>Usando os códigos no dia a dia</h2>
+    <p>
+      Se você cria APIs, escolher o código certo facilita a vida de quem as consome. Se você as
+      consome, saber onde olhar o status economiza horas de depuração.
+    </p>
+  </header>
+
+  <mat-tab-group mat-stretch-tabs="false" animationDuration="200ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">verified</mat-icon> Boas práticas para APIs
+      </ng-template>
+
+      <ul class="practices">
+        @for (p of practices; track p.title) {
+          <li class="card">
+            <h3>
+              <mat-icon>{{ p.icon }}</mat-icon> {{ p.title }}
+            </h3>
+            <p>{{ p.text }}</p>
+            <div class="compare">
+              <div class="good">
+                <span class="tag"><mat-icon>check_circle</mat-icon> Faça</span>
+                <pre class="code-block">{{ p.good }}</pre>
+              </div>
+              <div class="bad">
+                <span class="tag"><mat-icon>cancel</mat-icon> Evite</span>
+                <pre class="code-block">{{ p.bad }}</pre>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">bug_report</mat-icon> Como depurar
+      </ng-template>
+
+      <ul class="tips">
+        @for (tip of debugTips; track tip.title) {
+          <li class="card">
+            <h3>
+              <mat-icon>{{ tip.icon }}</mat-icon> {{ tip.title }}
+            </h3>
+            <p>{{ tip.text }}</p>
+            <pre class="code-block">{{ tip.code }}</pre>
+          </li>
+        }
+      </ul>
+    </mat-tab>
+  </mat-tab-group>
+</section>
