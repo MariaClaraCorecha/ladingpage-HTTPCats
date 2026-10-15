@@ -1,0 +1,34 @@
+<section id="pegadinhas" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>compare_arrows</mat-icon> Pegadinhas</p>
+    <h2>Códigos que vivem sendo confundidos</h2>
+    <p>
+      Alguns pares parecem dizer a mesma coisa, mas a diferença importa para quem consome a sua API.
+      Compare lado a lado e guarde a regra de bolso.
+    </p>
+  </header>
+
+  <ul class="grid">
+    @for (c of comparisons; track c.id) {
+      <li class="card">
+        <h3>
+          <span class="versus">{{ c.left.code }} × {{ c.right.code }}</span>
+          {{ c.question }}
+        </h3>
+
+        <div class="sides">
+          @for (side of [c.left, c.right]; track side.code) {
+            <div class="side" [class]="'status-c' + classOf(side.code)">
+              <img [src]="imageOf(side.code)" alt="" width="750" height="600" loading="lazy" />
+              <app-status-chip [code]="side.code" />
+              <p class="label">{{ side.label }}</p>
+              <p>{{ side.text }}</p>
+            </div>
+          }
+        </div>
+
+        <p class="rule"><mat-icon>lightbulb</mat-icon> {{ c.rule }}</p>
+      </li>
+    }
+  </ul>
+</section>
