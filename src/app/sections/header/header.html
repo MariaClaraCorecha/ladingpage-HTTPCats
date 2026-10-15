@@ -1,0 +1,32 @@
+<mat-toolbar class="toolbar">
+  <a class="brand" href="#inicio">
+    <span class="brand-icon" aria-hidden="true">🐱</span>
+    <span>HTTP Cats <small>Academy</small></span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <nav class="desktop-nav" aria-label="Seções">
+    @for (link of links; track link.href) {
+      <a mat-button [href]="link.href">{{ link.label }}</a>
+    }
+  </nav>
+
+  <button
+    mat-icon-button
+    (click)="toggleTheme()"
+    [matTooltip]="dark() ? 'Tema claro' : 'Tema escuro'"
+    [attr.aria-label]="dark() ? 'Ativar tema claro' : 'Ativar tema escuro'"
+  >
+    <mat-icon>{{ dark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  <button mat-icon-button class="mobile-nav" [matMenuTriggerFor]="menu" aria-label="Abrir menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    @for (link of links; track link.href) {
+      <a mat-menu-item [href]="link.href">{{ link.label }}</a>
+    }
+  </mat-menu>
+</mat-toolbar>
