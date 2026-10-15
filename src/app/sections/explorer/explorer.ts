@@ -14,11 +14,13 @@ import {
   statusClassOf,
 } from '../../data/status-codes';
 import { ExplorerState } from '../../explorer-state';
-import { StatusDialog } from './status-dialog';
+import { openStatusDialog } from '../../shared/status-dialog';
 
-/** Minúsculas e sem acentos, para a busca ignorar "redirecionamento" vs "Redirecionamento". */
 function normalize(text: string): string {
-  return text.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
 }
 
 @Component({
@@ -67,11 +69,6 @@ export class Explorer {
   }
 
   protected open(status: HttpStatus): void {
-    this.dialog.open(StatusDialog, {
-      data: status,
-      width: 'calc(100vw - 32px)',
-      maxWidth: '640px',
-      autoFocus: 'dialog',
-    });
+    openStatusDialog(this.dialog, status);
   }
 }
