@@ -1,0 +1,43 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: block;
+}
+
+.toolbar {
+  background: color-mix(in srgb, var(--mat-sys-surface-container) 90%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  font: var(--mat-sys-title-large);
+
+  small {
+    color: var(--mat-sys-primary);
+    font-weight: 500;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: inline-flex;
+  }
+}
