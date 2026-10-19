@@ -51,7 +51,6 @@ export class Simulator {
   protected send(): void {
     clearTimeout(this.timer);
     this.phase.set('sending');
-    // Uma pequena espera só para dar a sensação de que a requisição "viajou" até o servidor.
     this.timer = setTimeout(() => this.phase.set('done'), 700);
   }
 }
