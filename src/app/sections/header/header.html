@@ -15,7 +15,12 @@
 
   <nav class="desktop-nav" aria-label="Seções">
     @for (link of links; track link.href) {
-      <a mat-button [href]="link.href">{{ link.label }}</a>
+      <a
+        mat-button
+        [href]="link.href"
+        [class.active]="active() === link.href.slice(1)"
+        [attr.aria-current]="active() === link.href.slice(1) ? 'location' : null"
+      >{{ link.label }}</a>
     }
   </nav>
 
@@ -33,7 +38,12 @@
   </button>
   <mat-menu #menu="matMenu">
     @for (link of links; track link.href) {
-      <a mat-menu-item [href]="link.href">{{ link.label }}</a>
+      <a
+        mat-menu-item
+        [href]="link.href"
+        [class.active]="active() === link.href.slice(1)"
+        [attr.aria-current]="active() === link.href.slice(1) ? 'location' : null"
+      >{{ link.label }}</a>
     }
   </mat-menu>
 </mat-toolbar>
