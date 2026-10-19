@@ -1,4 +1,4 @@
-import { Comparison } from '@core/domain';
+import { Comparison } from '../core/domain/index';
 
 export const COMPARISONS: Comparison[] = [
   {

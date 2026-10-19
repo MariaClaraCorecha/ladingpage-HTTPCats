@@ -1,4 +1,4 @@
-import { HeaderInfo } from '@core/domain';
+import { HeaderInfo } from '../core/domain/index';
 
 export const HTTP_HEADERS: HeaderInfo[] = [
   {

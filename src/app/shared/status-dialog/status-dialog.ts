@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpStatus, statusClassOf } from '@core/domain';
-import { STATUS_CLASSES, catImageUrl } from '@data/index';
+import { HttpStatus, statusClassOf } from '../../core/domain/index';
+import { STATUS_CLASSES, catImageUrl } from '../../data/index';
 
 @Component({
   selector: 'app-status-dialog',

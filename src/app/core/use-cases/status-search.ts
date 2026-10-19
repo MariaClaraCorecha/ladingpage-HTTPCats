@@ -1,4 +1,4 @@
-import { HttpStatus, StatusClass, statusClassOf } from '@core/domain';
+import { HttpStatus, StatusClass, statusClassOf } from '../domain/index';
 
 export interface StatusFilter {
   query: string;

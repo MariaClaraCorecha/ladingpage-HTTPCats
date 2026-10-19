@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { HTTP_FLOW_STEPS, HTTP_METHODS, SAMPLE_REQUEST, SAMPLE_RESPONSE } from '@data/index';
+import { HTTP_FLOW_STEPS, HTTP_METHODS, SAMPLE_REQUEST, SAMPLE_RESPONSE } from '../../data/index';
 
 @Component({
   selector: 'app-fundamentals',

@@ -1,4 +1,4 @@
-import { HttpStatus } from '@core/domain';
+import { HttpStatus } from '../../core/domain/index';
 import { CLIENT_ERROR_STATUSES } from './client-error';
 import { INFORMATIONAL_STATUSES } from './informational';
 import { REDIRECTION_STATUSES } from './redirection';

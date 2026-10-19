@@ -1,5 +1,5 @@
 import { Component, afterNextRender, inject } from '@angular/core';
-import { AnchorScrollService } from '@core/services';
+import { AnchorScrollService } from './core/services/index';
 import { Header } from './features/header/header';
 import { Hero } from './features/hero/hero';
 import { Fundamentals } from './features/fundamentals/fundamentals';

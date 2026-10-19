@@ -1,4 +1,4 @@
-import { HttpFlowStep, HttpMethodInfo } from '@core/domain';
+import { HttpFlowStep, HttpMethodInfo } from '../core/domain/index';
 
 export const HTTP_FLOW_STEPS: HttpFlowStep[] = [
   {

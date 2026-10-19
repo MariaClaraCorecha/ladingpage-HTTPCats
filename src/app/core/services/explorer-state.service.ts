@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { StatusClass } from '@core/domain';
+import { StatusClass } from '../domain/index';
 import { AnchorScrollService } from './anchor-scroll.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,4 +1,4 @@
-import { Scenario, statusClassOf } from '@core/domain';
+import { Scenario, statusClassOf } from '../domain/index';
 
 export interface QuizQuestion {
   scenario: Scenario;

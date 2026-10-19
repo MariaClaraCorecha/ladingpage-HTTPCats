@@ -1,4 +1,4 @@
-import { HttpStatus } from '@core/domain';
+import { HttpStatus } from '../../core/domain/index';
 
 // 3xx — Redirecionamento
 export const REDIRECTION_STATUSES: HttpStatus[] = [

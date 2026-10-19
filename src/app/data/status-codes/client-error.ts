@@ -1,4 +1,4 @@
-import { HttpStatus } from '@core/domain';
+import { HttpStatus } from '../../core/domain/index';
 
 // 4xx — Erro do cliente
 export const CLIENT_ERROR_STATUSES: HttpStatus[] = [

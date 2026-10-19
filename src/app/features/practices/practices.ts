@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { DEBUG_TIPS, PRACTICES } from '@data/index';
+import { DEBUG_TIPS, PRACTICES } from '../../data/index';
 
 @Component({
   selector: 'app-practices',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { statusClassOf } from '@core/domain';
-import { COMPARISONS, catImageUrl } from '@data/index';
-import { StatusChip } from '@shared/status-chip/status-chip';
+import { statusClassOf } from '../../core/domain/index';
+import { COMPARISONS, catImageUrl } from '../../data/index';
+import { StatusChip } from '../../shared/status-chip/status-chip';
 
 @Component({
   selector: 'app-comparisons',

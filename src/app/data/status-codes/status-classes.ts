@@ -1,4 +1,4 @@
-import { StatusClassInfo } from '@core/domain';
+import { StatusClassInfo } from '../../core/domain/index';
 
 export const STATUS_CLASSES: StatusClassInfo[] = [
   {

@@ -1,4 +1,4 @@
-import { Scenario } from '@core/domain';
+import { Scenario } from '../domain/index';
 
 function formatHeaders(headers: Record<string, string>): string[] {
   return Object.entries(headers).map(([key, value]) => `${key}: ${value}`);

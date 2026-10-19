@@ -1,4 +1,4 @@
-import { HttpStatus } from '@core/domain';
+import { HttpStatus } from '../../core/domain/index';
 
 // 2xx — Sucesso
 export const SUCCESS_STATUSES: HttpStatus[] = [

@@ -1,4 +1,4 @@
-import { FaqItem } from '@core/domain';
+import { FaqItem } from '../core/domain/index';
 
 export const FAQ: FaqItem[] = [
   {

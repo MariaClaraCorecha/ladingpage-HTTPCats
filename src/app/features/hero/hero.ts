@@ -1,7 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { catImageUrl } from '@data/index';
+import { catImageUrl } from '../../data/index';
 
 @Component({
   selector: 'app-hero',

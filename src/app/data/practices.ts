@@ -1,4 +1,4 @@
-import { DebugTip, Practice } from '@core/domain';
+import { DebugTip, Practice } from '../core/domain/index';
 
 export const PRACTICES: Practice[] = [
   {

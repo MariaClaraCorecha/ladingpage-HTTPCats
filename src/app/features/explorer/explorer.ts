@@ -6,11 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { HttpStatus, statusClassOf } from '@core/domain';
-import { ExplorerStateService } from '@core/services';
-import { filterStatuses } from '@core/use-cases';
-import { HTTP_STATUSES, STATUS_CLASSES, catImageUrl } from '@data/index';
-import { openStatusDialog } from '@shared/status-dialog/status-dialog';
+import { HttpStatus, statusClassOf } from '../../core/domain/index';
+import { ExplorerStateService } from '../../core/services/index';
+import { filterStatuses } from '../../core/use-cases/index';
+import { HTTP_STATUSES, STATUS_CLASSES, catImageUrl } from '../../data/index';
+import { openStatusDialog } from '../../shared/status-dialog/status-dialog';
 
 @Component({
   selector: 'app-explorer',

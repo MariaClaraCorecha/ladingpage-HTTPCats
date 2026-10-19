@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { StatusClass } from '@core/domain';
-import { ExplorerStateService } from '@core/services';
-import { countByClass } from '@core/use-cases';
-import { HTTP_STATUSES, STATUS_CLASSES } from '@data/index';
+import { StatusClass } from '../../core/domain/index';
+import { ExplorerStateService } from '../../core/services/index';
+import { countByClass } from '../../core/use-cases/index';
+import { HTTP_STATUSES, STATUS_CLASSES } from '../../data/index';
 
 @Component({
   selector: 'app-classes',

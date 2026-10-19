@@ -1,8 +1,8 @@
 import { Component, computed, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { quizResult } from '@core/use-cases';
-import { catImageUrl, findStatus } from '@data/index';
+import { quizResult } from '../../../core/use-cases/index';
+import { catImageUrl, findStatus } from '../../../data/index';
 
 @Component({
   selector: 'app-quiz-result',

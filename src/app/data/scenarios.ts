@@ -1,4 +1,4 @@
-import { Scenario } from '@core/domain';
+import { Scenario } from '../core/domain/index';
 
 export const SCENARIOS: Scenario[] = [
   {

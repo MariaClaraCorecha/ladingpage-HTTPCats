@@ -1,9 +1,9 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { statusClassOf } from '@core/domain';
-import { findStatus } from '@data/index';
-import { openStatusDialog } from '@shared/status-dialog/status-dialog';
+import { statusClassOf } from '../../core/domain/index';
+import { findStatus } from '../../data/index';
+import { openStatusDialog } from '../status-dialog/status-dialog';
 @Component({
   selector: 'app-status-chip',
   imports: [MatTooltipModule],

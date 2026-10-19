@@ -4,9 +4,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { Scenario, statusClassOf } from '@core/domain';
-import { formatRequest, formatResponse } from '@core/use-cases';
-import { SCENARIOS, catImageUrl, findStatus } from '@data/index';
+import { Scenario, statusClassOf } from '../../core/domain/index';
+import { formatRequest, formatResponse } from '../../core/use-cases/index';
+import { SCENARIOS, catImageUrl, findStatus } from '../../data/index';
 
 type Phase = 'idle' | 'sending' | 'done';
 

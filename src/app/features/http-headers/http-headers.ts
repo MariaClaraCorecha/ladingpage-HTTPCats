@@ -1,9 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
-import { HeaderDirection } from '@core/domain';
-import { HTTP_HEADERS } from '@data/index';
-import { StatusChip } from '@shared/status-chip/status-chip';
+import { HeaderDirection, HeaderInfo } from '../../core/domain/index';
+import { HTTP_HEADERS } from '../../data/index';
+import { StatusChip } from '../../shared/status-chip/status-chip';
 
 type DirectionFilter = 'all' | 'request' | 'response';
 
@@ -16,7 +16,7 @@ type DirectionFilter = 'all' | 'request' | 'response';
 export class HeaderGuide {
   protected readonly filter = signal<DirectionFilter>('all');
 
-  protected readonly headers = computed(() => {
+  protected readonly headers = computed<HeaderInfo[]>(() => {
     const f = this.filter();
     return HTTP_HEADERS.filter((h) => f === 'all' || h.direction === f || h.direction === 'both');
   });

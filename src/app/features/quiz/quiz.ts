@@ -1,8 +1,8 @@
 import { Component, computed, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { buildQuizQuestions } from '@core/use-cases';
-import { SCENARIOS } from '@data/index';
+import { buildQuizQuestions } from '../../core/use-cases/index';
+import { SCENARIOS } from '../../data/index';
 import { QuizQuestion } from './quiz-question/quiz-question';
 import { QuizResult } from './quiz-result/quiz-result';
 
