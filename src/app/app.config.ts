@@ -9,7 +9,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    
+
     provideAppInitializer(() => {
       inject(MatIconRegistry).setDefaultFontSetClass('material-symbols-outlined');
     }),

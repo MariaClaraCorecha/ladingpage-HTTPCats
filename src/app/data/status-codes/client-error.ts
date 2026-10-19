@@ -1,0 +1,203 @@
+import { HttpStatus } from '@core/domain';
+
+// 4xx — Erro do cliente
+export const CLIENT_ERROR_STATUSES: HttpStatus[] = [
+  {
+    code: 400,
+    name: 'Bad Request',
+    description: 'O servidor não entendeu a requisição por erro de sintaxe ou dados inválidos.',
+    whenToUse: 'JSON malformado, parâmetros obrigatórios ausentes ou com tipo errado.',
+  },
+  {
+    code: 401,
+    name: 'Unauthorized',
+    description: 'É necessário se autenticar para acessar o recurso.',
+    whenToUse: 'Token ausente, expirado ou inválido. Na prática significa "não autenticado".',
+  },
+  {
+    code: 402,
+    name: 'Payment Required',
+    description: 'Reservado para uso futuro relacionado a pagamentos.',
+    whenToUse: 'Algumas APIs usam quando a cota paga acabou ou a assinatura está vencida.',
+  },
+  {
+    code: 403,
+    name: 'Forbidden',
+    description: 'O servidor sabe quem você é, mas você não tem permissão.',
+    whenToUse: 'Usuário autenticado tentando acessar a área de administrador, por exemplo.',
+  },
+  {
+    code: 404,
+    name: 'Not Found',
+    description: 'O recurso solicitado não foi encontrado.',
+    whenToUse: 'URL inexistente ou registro que não existe no banco (ex.: /usuarios/9999).',
+  },
+  {
+    code: 405,
+    name: 'Method Not Allowed',
+    description: 'O método HTTP usado não é suportado para este recurso.',
+    whenToUse: 'Um DELETE em um endpoint que só aceita GET. Deve informar o cabeçalho "Allow".',
+  },
+  {
+    code: 406,
+    name: 'Not Acceptable',
+    description: 'O servidor não consegue gerar uma resposta no formato pedido pelo cliente.',
+    whenToUse: 'Cliente pede "Accept: application/xml" e a API só fala JSON.',
+  },
+  {
+    code: 408,
+    name: 'Request Timeout',
+    description: 'O cliente demorou demais para enviar a requisição completa.',
+    whenToUse: 'Conexões ociosas por muito tempo; o servidor decide encerrá-las.',
+  },
+  {
+    code: 409,
+    name: 'Conflict',
+    description: 'A requisição conflita com o estado atual do recurso.',
+    whenToUse: 'Cadastro com e-mail já existente ou edição concorrente de um mesmo registro.',
+  },
+  {
+    code: 410,
+    name: 'Gone',
+    description: 'O recurso existia, mas foi removido permanentemente.',
+    whenToUse:
+      'Conteúdo descontinuado de propósito; diferente do 404, aqui a remoção é definitiva.',
+  },
+  {
+    code: 411,
+    name: 'Length Required',
+    description: 'O servidor exige o cabeçalho "Content-Length".',
+    whenToUse: 'Quando o cliente envia um corpo sem informar seu tamanho.',
+  },
+  {
+    code: 412,
+    name: 'Precondition Failed',
+    description: 'Uma pré-condição enviada nos cabeçalhos não foi satisfeita.',
+    whenToUse: 'Ao usar "If-Match" com um ETag desatualizado (controle de concorrência otimista).',
+  },
+  {
+    code: 413,
+    name: 'Payload Too Large',
+    description: 'O corpo da requisição é maior do que o servidor aceita.',
+    whenToUse: 'Upload de arquivo acima do limite configurado.',
+  },
+  {
+    code: 414,
+    name: 'URI Too Long',
+    description: 'A URL é longa demais para o servidor processar.',
+    whenToUse: 'Muitos parâmetros na query string; geralmente é melhor usar POST com corpo.',
+  },
+  {
+    code: 415,
+    name: 'Unsupported Media Type',
+    description: 'O formato do corpo enviado não é suportado.',
+    whenToUse: 'Enviar "Content-Type: text/plain" para uma API que só aceita JSON.',
+  },
+  {
+    code: 416,
+    name: 'Range Not Satisfiable',
+    description: 'O intervalo pedido no cabeçalho "Range" não existe no recurso.',
+    whenToUse: 'Pedir os bytes 5000-6000 de um arquivo que tem apenas 1000 bytes.',
+  },
+  {
+    code: 417,
+    name: 'Expectation Failed',
+    description: 'O servidor não consegue atender ao cabeçalho "Expect".',
+    whenToUse: 'Quando o "Expect: 100-continue" não pode ser honrado.',
+  },
+  {
+    code: 418,
+    name: "I'm a teapot",
+    description: 'Sou um bule de chá e me recuso a passar café. ☕',
+    whenToUse:
+      'Piada de 1º de abril (RFC 2324) que virou lenda. Alguns serviços usam como easter egg.',
+  },
+  {
+    code: 421,
+    name: 'Misdirected Request',
+    description: 'A requisição chegou a um servidor que não pode respondê-la.',
+    whenToUse: 'Conexões HTTP/2 reaproveitadas para um domínio que o servidor não atende.',
+  },
+  {
+    code: 422,
+    name: 'Unprocessable Entity',
+    description: 'A sintaxe está correta, mas os dados não passam nas regras de validação.',
+    whenToUse: 'JSON válido, mas com e-mail em formato errado ou idade negativa.',
+  },
+  {
+    code: 423,
+    name: 'Locked',
+    description: 'O recurso está bloqueado.',
+    whenToUse: 'Em WebDAV, quando outro usuário está editando o arquivo.',
+  },
+  {
+    code: 424,
+    name: 'Failed Dependency',
+    description: 'A operação falhou porque dependia de outra que também falhou.',
+    whenToUse: 'Em WebDAV, em operações encadeadas.',
+  },
+  {
+    code: 425,
+    name: 'Too Early',
+    description: 'O servidor não quer processar uma requisição que pode ser repetida (replay).',
+    whenToUse: 'Requisições enviadas cedo demais em conexões TLS 1.3 com "early data".',
+  },
+  {
+    code: 426,
+    name: 'Upgrade Required',
+    description: 'O cliente precisa trocar para outro protocolo.',
+    whenToUse: 'Servidor exige uma versão mais nova do protocolo, informada em "Upgrade".',
+  },
+  {
+    code: 428,
+    name: 'Precondition Required',
+    description: 'O servidor exige que a requisição seja condicional.',
+    whenToUse: 'Obrigar o envio de "If-Match" para evitar sobrescrever alterações alheias.',
+  },
+  {
+    code: 429,
+    name: 'Too Many Requests',
+    description: 'O cliente enviou requisições demais em pouco tempo.',
+    whenToUse: 'Rate limiting. Costuma vir com o cabeçalho "Retry-After".',
+  },
+  {
+    code: 431,
+    name: 'Request Header Fields Too Large',
+    description: 'Os cabeçalhos da requisição são grandes demais.',
+    whenToUse: 'Cookies acumulados que ultrapassam o limite do servidor.',
+  },
+  {
+    code: 444,
+    name: 'No Response',
+    description: 'O servidor fechou a conexão sem enviar resposta alguma.',
+    whenToUse: 'Extensão do Nginx para descartar requisições maliciosas.',
+    unofficial: true,
+  },
+  {
+    code: 450,
+    name: 'Blocked by Windows Parental Controls',
+    description: 'Acesso bloqueado pelo controle parental do Windows.',
+    whenToUse: 'Extensão da Microsoft.',
+    unofficial: true,
+  },
+  {
+    code: 451,
+    name: 'Unavailable For Legal Reasons',
+    description: 'O recurso não pode ser exibido por motivos legais.',
+    whenToUse: 'Censura ou ordem judicial. O número é uma homenagem ao livro "Fahrenheit 451".',
+  },
+  {
+    code: 497,
+    name: 'HTTP Request Sent to HTTPS Port',
+    description: 'Uma requisição HTTP simples foi enviada para a porta HTTPS.',
+    whenToUse: 'Extensão do Nginx.',
+    unofficial: true,
+  },
+  {
+    code: 499,
+    name: 'Client Closed Request',
+    description: 'O cliente fechou a conexão antes de o servidor responder.',
+    whenToUse: 'Extensão do Nginx, comum em logs quando o usuário cancela o carregamento.',
+    unofficial: true,
+  },
+];

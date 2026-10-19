@@ -1,17 +1,4 @@
-export interface ComparisonSide {
-  code: number;
-  label: string;
-  text: string;
-}
-
-
-export interface Comparison {
-  id: string;
-  question: string;
-  left: ComparisonSide;
-  right: ComparisonSide;
-  rule: string;
-}
+import { Comparison } from '@core/domain';
 
 export const COMPARISONS: Comparison[] = [
   {

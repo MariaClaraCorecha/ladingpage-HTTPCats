@@ -1,0 +1,27 @@
+<section id="quiz" class="section">
+  <header class="section-header">
+    <p class="eyebrow"><mat-icon>quiz</mat-icon> Quiz</p>
+    <h2>Qual código o servidor responde?</h2>
+    <p>{{ total() }} situações sorteadas. Escolha o status correto para cada uma.</p>
+  </header>
+
+  <div class="quiz-card">
+    @if (!finished()) {
+      <div class="progress-row">
+        <span>Pergunta {{ index() + 1 }} de {{ total() }}</span>
+        <span class="score"><mat-icon>star</mat-icon> {{ score() }}</span>
+      </div>
+      <mat-progress-bar mode="determinate" [value]="progress()" />
+
+      <app-quiz-question
+        [question]="current()"
+        [picked]="picked()"
+        [isLast]="isLast()"
+        (pick)="pick($event)"
+        (next)="next()"
+      />
+    } @else {
+      <app-quiz-result [score]="score()" [total]="total()" (restart)="restart()" />
+    }
+  </div>
+</section>

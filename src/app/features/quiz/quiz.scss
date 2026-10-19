@@ -1,0 +1,35 @@
+.quiz-card {
+  max-width: 820px;
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--mat-sys-surface-container);
+  box-shadow: var(--mat-sys-level1);
+}
+
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-large);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--mat-sys-primary);
+
+  .mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .quiz-card {
+    padding: 20px;
+  }
+}

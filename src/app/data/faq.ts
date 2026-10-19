@@ -1,7 +1,4 @@
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
+import { FaqItem } from '@core/domain';
 
 export const FAQ: FaqItem[] = [
   {

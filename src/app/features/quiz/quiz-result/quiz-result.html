@@ -1,0 +1,17 @@
+<div class="result">
+  <img
+    [src]="image()"
+    [alt]="'Gato representando o status ' + result().code"
+    width="750"
+    height="600"
+  />
+  <div>
+    <p class="final-score"><mat-icon>emoji_events</mat-icon> {{ score() }} / {{ total() }}</p>
+    <p class="verdict">{{ result().code }} {{ statusName() }}</p>
+    <p>{{ result().message }}</p>
+    <button mat-flat-button (click)="restart.emit()">
+      <mat-icon>replay</mat-icon>
+      Jogar de novo
+    </button>
+  </div>
+</div>

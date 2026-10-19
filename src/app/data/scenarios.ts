@@ -1,17 +1,4 @@
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-
-export interface Scenario {
-  id: string;
-  label: string;
-  method: HttpMethod;
-  path: string;
-  requestHeaders: Record<string, string>;
-  requestBody?: string;
-  status: number;
-  responseHeaders: Record<string, string>;
-  responseBody?: string;
-  explanation: string;
-}
+import { Scenario } from '@core/domain';
 
 export const SCENARIOS: Scenario[] = [
   {
@@ -62,7 +49,8 @@ export const SCENARIOS: Scenario[] = [
     status: 400,
     responseHeaders: { 'Content-Type': 'application/json' },
     responseBody: '{ "erro": "JSON inválido na linha 1" }',
-    explanation: 'O servidor nem conseguiu interpretar o corpo. A culpa é de quem enviou: erro 4xx.',
+    explanation:
+      'O servidor nem conseguiu interpretar o corpo. A culpa é de quem enviou: erro 4xx.',
   },
   {
     id: 'no-token',

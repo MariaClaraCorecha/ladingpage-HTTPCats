@@ -1,0 +1,60 @@
+<mat-toolbar class="toolbar">
+  <a class="brand" href="#inicio">
+    <span class="brand-icon" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      >
+        <path
+          d="M5 4.5 9.4 7.4a8 8 0 0 1 5.2 0L19 4.5V11c.6 1 1 2.2 1 3.5 0 4-3.6 6.5-8 6.5s-8-2.5-8-6.5c0-1.3.4-2.5 1-3.5Z"
+        />
+        <circle cx="9" cy="13.5" r="1" fill="currentColor" stroke="none" />
+        <circle cx="15" cy="13.5" r="1" fill="currentColor" stroke="none" />
+        <path d="M11 16.3h2l-1 1.1Z" fill="currentColor" />
+      </svg>
+    </span>
+    <span>HTTP Cats <small>Academy</small></span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <nav class="desktop-nav" aria-label="Seções">
+    @for (link of links; track link.href) {
+      <a
+        mat-button
+        [href]="link.href"
+        [class.active]="active() === link.href.slice(1)"
+        [attr.aria-current]="active() === link.href.slice(1) ? 'location' : null"
+        >{{ link.label }}</a
+      >
+    }
+  </nav>
+
+  <button
+    mat-icon-button
+    (click)="theme.toggle()"
+    [matTooltip]="theme.dark() ? 'Tema claro' : 'Tema escuro'"
+    [attr.aria-label]="theme.dark() ? 'Ativar tema claro' : 'Ativar tema escuro'"
+  >
+    <mat-icon>{{ theme.dark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  <button mat-icon-button class="mobile-nav" [matMenuTriggerFor]="menu" aria-label="Abrir menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    @for (link of links; track link.href) {
+      <a
+        mat-menu-item
+        [href]="link.href"
+        [class.active]="active() === link.href.slice(1)"
+        [attr.aria-current]="active() === link.href.slice(1) ? 'location' : null"
+        >{{ link.label }}</a
+      >
+    }
+  </mat-menu>
+</mat-toolbar>

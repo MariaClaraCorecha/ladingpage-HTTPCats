@@ -1,10 +1,4 @@
-export interface Practice {
-  icon: string;
-  title: string;
-  text: string;
-  good: string;
-  bad: string;
-}
+import { DebugTip, Practice } from '@core/domain';
 
 export const PRACTICES: Practice[] = [
   {
@@ -50,13 +44,6 @@ export const PRACTICES: Practice[] = [
     bad: '500 Internal Server Error\nNullPointerException at UserService.java:42 ...',
   },
 ];
-
-export interface DebugTip {
-  icon: string;
-  title: string;
-  text: string;
-  code: string;
-}
 
 export const DEBUG_TIPS: DebugTip[] = [
   {

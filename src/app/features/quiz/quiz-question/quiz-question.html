@@ -1,0 +1,50 @@
+@let q = question();
+<p class="prompt">{{ q.scenario.label }}</p>
+<code class="request">{{ q.scenario.method }} {{ q.scenario.path }}</code>
+
+<div class="options" role="group" aria-label="Alternativas">
+  @for (code of q.options; track code) {
+    <button
+      type="button"
+      class="option"
+      [class.correct]="picked() !== null && code === q.scenario.status"
+      [class.wrong]="picked() === code && code !== q.scenario.status"
+      [disabled]="picked() !== null"
+      (click)="pick.emit(code)"
+    >
+      <span class="code">{{ code }}</span>
+      <span class="name">{{ nameOf(code) }}</span>
+      @if (picked() !== null && code === q.scenario.status) {
+        <mat-icon class="mark">check_circle</mat-icon>
+      } @else if (picked() === code) {
+        <mat-icon class="mark">cancel</mat-icon>
+      }
+    </button>
+  }
+</div>
+
+@if (picked() !== null) {
+  <div class="feedback" aria-live="polite">
+    <img
+      [src]="imageOf(q.scenario.status)"
+      [alt]="'Gato representando o status ' + q.scenario.status"
+      width="750"
+      height="600"
+    />
+    <div>
+      <p class="verdict" [class.ok]="picked() === q.scenario.status">
+        @if (picked() === q.scenario.status) {
+          <mat-icon>celebration</mat-icon> Acertou!
+        } @else {
+          <mat-icon>sentiment_dissatisfied</mat-icon>
+          Era {{ q.scenario.status }} {{ nameOf(q.scenario.status) }}
+        }
+      </p>
+      <p>{{ q.scenario.explanation }}</p>
+      <button mat-flat-button (click)="next.emit()">
+        {{ isLast() ? 'Ver resultado' : 'Próxima' }}
+        <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+}

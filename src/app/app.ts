@@ -1,17 +1,17 @@
 import { Component, afterNextRender, inject } from '@angular/core';
-import { AnchorScroll } from './anchor-scroll';
-import { Header } from './sections/header/header';
-import { Hero } from './sections/hero/hero';
-import { Fundamentals } from './sections/fundamentals/fundamentals';
-import { Classes } from './sections/classes/classes';
-import { Explorer } from './sections/explorer/explorer';
-import { Comparisons } from './sections/comparisons/comparisons';
-import { HeaderGuide } from './sections/headers/headers';
-import { Simulator } from './sections/simulator/simulator';
-import { Practices } from './sections/practices/practices';
-import { Quiz } from './sections/quiz/quiz';
-import { Faq } from './sections/faq/faq';
-import { Footer } from './sections/footer/footer';
+import { AnchorScrollService } from '@core/services';
+import { Header } from './features/header/header';
+import { Hero } from './features/hero/hero';
+import { Fundamentals } from './features/fundamentals/fundamentals';
+import { Classes } from './features/classes/classes';
+import { Explorer } from './features/explorer/explorer';
+import { Comparisons } from './features/comparisons/comparisons';
+import { HeaderGuide } from './features/http-headers/http-headers';
+import { Simulator } from './features/simulator/simulator';
+import { Practices } from './features/practices/practices';
+import { Quiz } from './features/quiz/quiz';
+import { Faq } from './features/faq/faq';
+import { Footer } from './features/footer/footer';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +37,7 @@ import { Footer } from './sections/footer/footer';
   },
 })
 export class App {
-  private readonly anchors = inject(AnchorScroll);
+  private readonly anchors = inject(AnchorScrollService);
 
   constructor() {
     // Ao abrir a página já com #secao, as seções @defer ainda não existem:
@@ -46,7 +46,14 @@ export class App {
   }
 
   protected onDocumentClick(event: MouseEvent): void {
-    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey
+    )
+      return;
     const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
     const id = link?.getAttribute('href')!.slice(1);
     if (!id || !document.getElementById(id)) return;
