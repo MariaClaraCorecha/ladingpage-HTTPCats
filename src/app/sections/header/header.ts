@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AnchorScroll } from '../../anchor-scroll';
 
 const THEME_KEY = 'http-cats-theme';
 
@@ -27,9 +28,11 @@ export class Header {
   ];
 
   protected readonly dark = signal(this.initialTheme());
+  protected readonly active = inject(AnchorScroll).active;
 
   constructor() {
     this.applyTheme();
+    inject(AnchorScroll).track(this.links.map((l) => l.href.slice(1)));
   }
 
   protected toggleTheme(): void {
