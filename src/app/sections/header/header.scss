@@ -25,6 +25,12 @@
   }
 }
 
+.desktop-nav a.active,
+.mat-mdc-menu-item.active {
+  color: var(--mat-sys-primary);
+  background: color-mix(in srgb, var(--mat-sys-primary) 10%, transparent);
+}
+
 .spacer {
   flex: 1;
 }
